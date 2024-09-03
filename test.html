@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تغيير لون الصفحة بتدرجات</title>
+    <title>chang_body_color</title>
     <style>
         body {
             margin: 0;
@@ -13,7 +13,7 @@
             justify-content: center;
             align-items: center;
             background: linear-gradient(to right, red, white);
-            /* بداية التدرج */
+            
             transition: background 0.3s ease;
         }
 
@@ -66,7 +66,7 @@
         }
 
         function toggleSliders(currentSlider, slider1, slider2) {
-            // التحقق من الحالة الحالية للشرائط الأخرى وتبديلها
+            
             if (slider1.style.display === "none" && slider2.style.display === "none") {
                 slider1.style.display = "block";
                 slider2.style.display = "block";
@@ -76,23 +76,20 @@
             }
         }
 
-        // تحديث لون الخلفية عند تغيير قيمة أي من الشرائط
+        
         sliderRed.addEventListener('input', updateBackground);
         sliderBlue.addEventListener('input', updateBackground);
         sliderGreen.addEventListener('input', updateBackground);
 
-        // تبديل عرض الشرائط الأخرى عند النقر على كل شريط
+     
         sliderRed.addEventListener('click', () => toggleSliders(sliderRed, sliderGreen, sliderBlue));
         sliderBlue.addEventListener('click', () => toggleSliders(sliderBlue, sliderRed, sliderGreen));
-        sliderGreen.addEventListener('click', () => toggleSliders(sliderGreen, sliderRed, sliderBlue));
-
-
-        // تحديث لون الخلفية عند تغيير قيمة أي من الشرائط
+        sliderGreen.addEventListener('click', () => toggleSliders(sliderGreen, sliderRed, sliderBlue));ط
         sliderRed.addEventListener('input', updateBackground);
         sliderBlue.addEventListener('input', updateBackground);
         sliderGreen.addEventListener('input', updateBackground);
 
-        // إخفاء الشرائط الأخرى عند النقر على الشريط الأحمر
+        
 
 
 
