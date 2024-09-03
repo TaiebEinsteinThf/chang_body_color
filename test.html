@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تغيير لون الصفحة بتدرجات</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, red, white);
+            /* بداية التدرج */
+            transition: background 0.3s ease;
+        }
+
+
+        .slider-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        input[type="range"] {
+            writing-mode: bt-lr;
+            -webkit-appearance: slider-vertical;
+            width: 8px;
+            height: 300px;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="slider-container" style="left: 0%;">
+        <input type="range" id="sliderRed" min="0" max="255" value="255">
+    </div>
+    <div class="slider-container" style="left: 38%;">
+        <input type="range" id="sliderGreen" min="0" max="255" value="255">
+    </div>
+    <div class="slider-container" style="left: 75%;">
+        <input type="range" id="sliderBlue" min="0" max="255" value="255">
+    </div>
+
+
+    <script>
+        const sliderRed = document.getElementById('sliderRed');
+        const sliderBlue = document.getElementById('sliderBlue');
+        const sliderGreen = document.getElementById('sliderGreen');
+
+        function updateBackground() {
+            const redValue = sliderRed.value;
+            const blueValue = sliderBlue.value;
+            const greenValue = sliderGreen.value;
+
+            // تحديث لون الخلفية
+            document.body.style.background = `linear-gradient(to right, 
+    rgb(${redValue}, ${blueValue}, ${blueValue})23%, 
+                rgb(${blueValue},${greenValue}, ${redValue} )50%, 
+                rgb( ${greenValue},${redValue}, ${greenValue} ) 100%)`;
+
+        }
+
+        function toggleSliders(currentSlider, slider1, slider2) {
+            // التحقق من الحالة الحالية للشرائط الأخرى وتبديلها
+            if (slider1.style.display === "none" && slider2.style.display === "none") {
+                slider1.style.display = "block";
+                slider2.style.display = "block";
+            } else {
+                slider1.style.display = "none";
+                slider2.style.display = "none";
+            }
+        }
+
+        // تحديث لون الخلفية عند تغيير قيمة أي من الشرائط
+        sliderRed.addEventListener('input', updateBackground);
+        sliderBlue.addEventListener('input', updateBackground);
+        sliderGreen.addEventListener('input', updateBackground);
+
+        // تبديل عرض الشرائط الأخرى عند النقر على كل شريط
+        sliderRed.addEventListener('click', () => toggleSliders(sliderRed, sliderGreen, sliderBlue));
+        sliderBlue.addEventListener('click', () => toggleSliders(sliderBlue, sliderRed, sliderGreen));
+        sliderGreen.addEventListener('click', () => toggleSliders(sliderGreen, sliderRed, sliderBlue));
+
+
+        // تحديث لون الخلفية عند تغيير قيمة أي من الشرائط
+        sliderRed.addEventListener('input', updateBackground);
+        sliderBlue.addEventListener('input', updateBackground);
+        sliderGreen.addEventListener('input', updateBackground);
+
+        // إخفاء الشرائط الأخرى عند النقر على الشريط الأحمر
+
+
+
+
+    </script>
+
+</body>
+
+</html>
